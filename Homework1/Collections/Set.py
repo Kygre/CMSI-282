@@ -1,15 +1,11 @@
 '''
 Created on Jan 23, 2015
 
-@author: Supreme
+@author: Kwadwo Yeboah
 
 A first principle implementation of a Red-Black Tree
 '''
-
-from _collections_abc import Iterable
 from math import floor
-
-from Collections.ICollection import ICollection
 
 
 class PriorityQueue():
@@ -26,34 +22,38 @@ class PriorityQueue():
         return self.myHeap[0]
     
     def remove(self):
+        
+        if self.myHeap.__len__() == 0:
+            raise Exception("Cannot remove from empty Priority Queue")
+    
         first_pop = self.peek()
-        if self.myHeap.__len__() > 1:
+        
+        if self.myHeap.__len__() == 1:
+            self.myHeap = []         
+        else:
             self.myHeap[0] = self.myHeap.pop()        
             self.siftDown(0)
+            
         return first_pop
     
     def siftDown(self, index):
         
-        child_left_index = index * 2 + 1
+        child_index = index * 2 + 1
         
-        smaller_child = None
+        if child_index >= self.myHeap.__len__():
+            return
         
-        if child_left_index + 1 < self.myHeap.__len__():
-            
-            if self.myHeap[child_left_index] < self.myHeap[child_left_index + 1]:
-                smaller_child = child_left_index
-            else:
-                smaller_child = child_left_index + 1
-        elif child_left_index < self.myHeap.__len__():
-            
-            smaller_child = child_left_index 
         
-        if smaller_child is not None:
+        if child_index + 1 < self.myHeap.__len__():
             
-            if self.myHeap[smaller_child] < self.myHeap[index]:
+            if self.myHeap[child_index] > self.myHeap[child_index + 1]:
+                child_index += 1
+            
+                  
+        if self.myHeap[child_index] < self.myHeap[index]:
                 
-                self.myHeap[index], self.myHeap[smaller_child] = self.myHeap[smaller_child], self.myHeap[index]
-                self.siftDown(smaller_child)
+                self.myHeap[index], self.myHeap[child_index] = self.myHeap[child_index], self.myHeap[index]
+                self.siftDown(child_index)
         
         
         
@@ -63,10 +63,7 @@ class PriorityQueue():
         
         if(parent >= 0 and self.myHeap[index] < self.myHeap[parent]):
             
-            temp = self.myHeap[index]
-            self.myHeap[index] = self.myHeap[parent]
-            self.myHeap[parent] = temp 
-            
+            self.myHeap[index], self.myHeap[parent] = self.myHeap[parent], self.myHeap[index]
             self.siftUp(parent)
         
     
@@ -90,4 +87,29 @@ class PriorityQueue():
             
         return self.myHeap.__str__()
 
+'''
+if __name__ == "__main__":
+    
+    a = PriorityQueue()
+    
+    scan = ""
+    
+    while scan != "q":
+        
+        
+        scan = input("q to quit or add # to push")
+        
+        if scan != "q":
+            
+            a.add(int(scan))
+            
+        elif scan = "p"
+            print(str(a.remove())
+            
+        print(a)
+    
+'''
+    
+    
+    
     

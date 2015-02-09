@@ -14,7 +14,6 @@ class Test(unittest.TestCase):
         self.myPQ = PriorityQueue()
         
 
-
     def tearDown(self):
         pass
 
@@ -23,6 +22,17 @@ class Test(unittest.TestCase):
        
        
         self.assertEqual(0, a.__len__(), "Initiliazed Queue is not empty!")
+    
+    def test_Exception_For_Empty_Remove(self):
+        a = PriorityQueue()
+        
+        try:
+            a.remove()
+            self.fail("Failed to catch Exception")
+        except Exception:
+            self.assertTrue(True)
+            
+        
     
     def test_push_To_Random(self):
         rand_max = randint(10, 1000)
