@@ -1,11 +1,13 @@
 '''
 Created on Jan 25, 2015
 
-@author: Supreme
+@author: Kwadwo Yeboah
 '''
-import unittest
-from Collections.Set import PriorityQueue
 from random import randint, shuffle
+import unittest
+
+from Collections.Set import PriorityQueue
+
 
 class Test(unittest.TestCase):
 
@@ -16,7 +18,7 @@ class Test(unittest.TestCase):
 
     def tearDown(self):
         pass
-
+    
     def test_empty_Init_PriorityQueue(self):
         a = PriorityQueue()
        
@@ -48,6 +50,7 @@ class Test(unittest.TestCase):
         pushees = []
         for i in range(0,50): 
             pushees.append(i)
+        
         
         tester = pushees.copy()
         shuffle(pushees)
