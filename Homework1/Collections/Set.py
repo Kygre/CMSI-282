@@ -78,29 +78,3 @@ class PriorityQueue():
         
         return self.__myHeap.__str__()
 
-'''
-if __name__ == "__main__":
-    
-    a = PriorityQueue()
-    
-    scan = ""
-    
-    while scan != "q":
-        
-        
-        scan = input("q to quit or add # to push")
-        
-        if scan == "p":
-            print(str(a.remove()))
-            
-        elif scan != "q":
-            
-            a.add(int(scan))
-            
-        
-            
-        
-        print(a)           
-            
-            
-'''            
