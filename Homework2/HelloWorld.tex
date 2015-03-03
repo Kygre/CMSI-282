@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\title{CMSI 282 Homework \#2}
+\author{Kwadwo Yeboah}
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item \texttt{0.1}
+	\begin{enumerate}
+    \item \(f = \Theta(g)\)
+    \item \(f = O(g)\)
+    \item \(f = \Theta(g)\)
+    \item \(f = \Theta(g)\) 
+    \item \(f = \Theta(g)\)	
+    \item \(f = O(g)\) 
+    \item \(f = O(g)\) % Since polynomials are over logarithms 
+    \item \(f = \Omega(g)\)
+    \item \(f = O(g)\)
+    \item \(f = O(g)\)
+    \item \(f = O(g)\)
+	\item \(f = \Omega(g)\)
+    \item \(f = O(g)\)	% Check later
+    \item \(f = O(g)\)
+   	\item \(f = \Theta(g)\)	% Ask how to do this one	
+   	\item \(f = O(g)\) 
+   	\item \(f = \Theta(g)\)
+
+   	 
+  	\end{enumerate}
+\item \texttt{0.4}
+	\begin{enumerate}
+	 \item 2x2 Matrix Multiplication with 4 additions and 8 multiplications.
+	 \[\begin{bmatrix}
+    x_{11} & x_{12} \\
+    x_{21} & x_{22} 
+    
+\end{bmatrix} 
+*
+\begin{bmatrix}
+    y_{11} & y_{12} \\
+    y_{21} & y_{22} 
+    
+\end{bmatrix} 
+=
+\begin{bmatrix}
+    ({x_{11} * y_{11} + {x_{12} * y_{21} }}) & ({x_{11} * y_{12} + {x_{12} * y_{22} }}) \\
+    ({x_{21} * y_{11} + {x_{22} * y_{21} }}) & ({x_{21} * y_{12} + {x_{22} * y_{22} }}) 
+    
+\end{bmatrix} 
+\]
+\item $31^{400} = 31^{256} * 31^{128} * 31^{16}$
+	\end{enumerate}
+
+\item \texttt{1.2} Where n equals the number of digits after the radix point then n digits allows the binary digit range of $ [0, 2^{4n}]$, the right hand side equals the range of possible binary numbers for n decimal digits. \[1 \implies 0001\] \[10 \implies 1010\] \[100 \implies 0110 0100\]
+
+\item \texttt{1.4} Since $\Theta(n) = O(n) \cap \Omega(n)$. Then for $log(n!) = \Theta(n* log(n))$, the upper bound is $O(log(n)^n)$ and the lower bound is $\Omega( log(\frac{n}{2})^\frac{n}{2} )$. Both will simplify to $n*log(n) \implies \Theta(n* log(n))$
+
+\item \texttt{1.11} Yes. Using GCD of Python
+\item \texttt{1.13} Yes. Using GCD of Python
+\item \texttt{1.16} Example with b = 11 \[a^{11}\mod c 
+=
+a^{10} * a^{1}
+= a^5 * a^5 * a^1
+\]
+\item 64. Using Python version of exponential modulus calculator
+\item The running time is $\frac{1}{n}$ . Using the recursive version of gcd where the worst case is $Big (\theta) = n^3$. \\  def LCM ( a , b ): return abs(a * b) / gcd( a, b )
+\item 1.35 The calculation of $(n-1)!$ produces n multiplications which does not scale too well with large inputs of n.
+\item 1.39 
+\begin{lstlisting}[language=Python]
+def repeateSquare( base, exponent , p):
+    
+    
+    result = 1
+    base = base % p
+    while exponent > 0:
+        if exponent % 2 == 1:
+                result = (result * base) % p
+        exponent = exponent >> 1     
+        base = (base * base) % p
+     
+     
+    return result
+
+def exp_Mod(a,b,c, p):
+    
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    p = int(p)
+    
+    if a == 0:
+        return 0
+
+    if b == 0:
+        return 1
+    
+    return repeateSquare( a, repeateSquare(b,c, p), p)
+    
+\end{lstlisting}
+\end{enumerate}
+\end{document}
