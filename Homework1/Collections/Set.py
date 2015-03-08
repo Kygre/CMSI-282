@@ -60,7 +60,7 @@ class PriorityQueue():
         
     def siftUp(self, index):
         
-        parent = floor((index - 1) / 2)
+        parent = ((index - 1) // 2)
         
         if(parent >= 0 and self.__myHeap[index] < self.__myHeap[parent]):
             
